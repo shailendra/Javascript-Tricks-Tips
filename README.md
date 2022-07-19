@@ -4,6 +4,21 @@
 
 ## Table Of Content 
 - [Array](#array)
+   - [Array and Spread Operator](#array-and-spread-operator)
+- [String](#string)
+- [Function](#function)
+   - [Arrow Function](#arrow-function)
+   - [Concise Declarative Functions with ES6](#concise-declarative-functions-with-es6)
+   - [Functional Programming](#functional-programming)
+- [Object](#object)
+   - [Prevent Object Mutation](#prevent-object-mutation)
+- [Class](#class)
+- [OOP](#oop---object-oriented-programming-sample-code)
+- [Destruction](#destruction)
+- [Promises and Asynchronous Programming](#promises-and-asynchronous-programming)
+- [Regular expressions](#regular-expressions)
+- [Recursion](#recursion)
+- [Debugging](#debugging)
 
 
 
@@ -225,11 +240,45 @@ items.sort(function(a, b) {
 ```
 
 
-
 <br><br><br>
 
 
-## Arrow Function
+#### Array and Spread Operator
+```javascript
+const arr = [6, 89, 3, 45];
+const maximus = Math.max(...arr);
+// result -  89
+
+```
+<br>
+<hr>
+
+
+<br><br>
+
+
+## String
+### Create Strings using Template Literals
+Template literals allow you to create multi-line strings and to use string interpolation features to create strings.
+```javascript
+const person = {
+  name: "Zodiac Hasbro",
+  age: 56
+};
+
+const greeting = `Hello, my name is ${person.name}!
+I am ${person.age} years old.`;
+
+console.log(greeting);
+```
+
+
+<br>
+<hr>
+<br><br><br>
+
+## Function
+### Arrow Function
 ```javascript
 const myFunc = () => {
   const myVar = "value";
@@ -260,26 +309,81 @@ console.log(howMany("string", null, [1, 2, 3], { }));
 
 ```
 
+<br><br>
 
-## [Recursion - Return Sub of Array](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/replace-loops-using-recursion)
+
+### Concise Declarative Functions with ES6
 ```javascript
-/*
-A recursive function that returns 
-the sum of the first n elements of an array arr
-*/
-function sum(arr, n) {
-  if(n <= 0) {
-    return 0;
-  } else {
-    return sum(arr, n - 1) + arr[n - 1];
+//--  ES5 --------
+const person = {
+  name: "Taylor",
+  sayHello: function() {
+    return `Hello! My name is ${this.name}.`;
   }
-}
-sum([1], 0)           // return 0
-sum([2, 3, 4], 1)     // return 2
-sum([2, 3, 4, 5], 3)  // return 9
+};
+//--  ES6 --------
+// With ES6, you can remove the function keyword and 
+// colon altogether when defining functions in objects
+const person = {
+  name: "Taylor",
+  sayHello() {
+    return `Hello! My name is ${this.name}.`;
+  }
+};
+
+```
+<br><br><br>
+
+### Functional Programming
+Functional Programming is another popular approach to software development. In Functional Programming, code is organized into smaller, basic functions that can be combined to build complex programs
+
+- Functional programming is a style of programming where solutions are simple, isolated functions, without any side effects outside of the function scope: INPUT -> PROCESS -> OUTPUT
+- **Callbacks** are the functions that are slipped or passed into another function to decide the invocation of that function
+- Functional programming is a form of declarative programming. You tell the computer what you want done by calling a method or function
+- **Avoid Mutations and Side Effects Using Functional Programming** - One of the core principles of functional programming is to not change things. Changes lead to bugs. It's easier to prevent bugs knowing that your functions don't change anything, including the function arguments or any global variable.
+- **Pass Arguments to Avoid External Dependence in a Function** - Another principle of functional programming is to always declare your dependencies explicitly. This means if a function depends on a variable or object being present, then pass that variable or object directly into the function as an argument
+- Don't alter a variable or object - create new variables and objects and return them if need be from a function. Hint
+- Use the map Method to Extract Data from an Array
+
+```javascript
+// console.log() - To print output use console.log
+var name = "Shailendra";
+var surname = "more";
+console.log(name, surname)
+```
+
+<br>
+<hr>
+
+<br><br><br>
+
+## Object
+### [Prevent Object Mutation](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/es6/prevent-object-mutation)
+JavaScript provides a function Object.freeze to prevent data mutation.
+Once the object is frozen, you can no longer add, update, or delete properties from it. Any attempt at changing the object will be rejected without an error.
+```javascript
+let obj = {
+  name:"FreeCodeCamp",
+  review:"Awesome"
+};
+
+Object.freeze(obj);
+
+obj.review = "bad";
+obj.newProp = "Test";
+console.log(obj); 
+/*
+The obj.review and obj.newProp assignments will result 
+in errors, and the console will display the value 
+{ name: "FreeCodeCamp", review: "Awesome" }.
+*/
 ```
 
 
+
+
+<br>
+<hr>
 
 <br><br><br>
 
@@ -368,10 +472,10 @@ myMathModule.add(2,3);
 myMathModule.subtract(5,3);
 ```
 
+<br>
+<hr>
 
-
-
-<br><br><br>
+<br><br>
 
 
 
@@ -581,7 +685,67 @@ console.log(dog.location, dog.leg);  // mumbai 4
 ```
 
 
-<br><br><br>
+<br>
+<hr>
+
+<br><br>
+
+
+## Destruction
+```javascript
+// Extract Values from Objects
+const user = { name: 'John Doe', age: 34 };
+const { name, age } = user;
+
+// Extract and give new variable names in the assignment
+const user = { name: 'John Doe', age: 34 };
+const { name: userName, age: userAge } = user;
+
+// Assign Variables from Nested Objects Passed
+const user = {
+  johnDoe: { 
+    age: 34,
+    email: 'johnDoe@freeCodeCamp.com'
+  }
+};
+const { johnDoe: { age, email }} = user;
+const { johnDoe: { age: userAge, email: userEmail }} = user;
+
+
+// Destructuring an array lets us do exactly that:
+const [a, b] = [1, 2, 3, 4, 5, 6];
+console.log(a, b); // The console will display the values of a and b as 1, 2.
+
+// Destructuring by using commas to reach the desired index
+const [a, b,,, c] = [1, 2, 3, 4, 5, 6];
+console.log(a, b, c);
+// The console will display the values 
+// of a, b, and c as 1, 2, 5.
+
+// Destructuring Assignment with 
+// the Rest Parameter to Reassign Array
+const [a, b, ...arr] = [1, 2, 3, 4, 5, 7];
+console.log(a, b);
+console.log(arr);
+// The console would display the values 1, 2 and [3, 4, 5, 7].
+
+// Copy Array using Destruction
+let array = [1, 2, 3, 4, 5, 7];
+let copyArray = [...array];
+
+
+// Destructuring Assignment to Pass an Object as a Function's Parameters
+const update = ({name, age, nationality, location}) => {
+    console.log(name, age, nationality, location)
+}
+update({name:"shailendra", age:43, location:"Mumbai"})
+
+```
+
+
+<br>
+<hr>
+<br><br>
 
 
 
@@ -990,9 +1154,11 @@ promise.success(function(value) {
 
 
 
+<br>
+<hr>
 
 
-<br><br><br>
+<br><br>
 
 
 
@@ -1190,14 +1356,36 @@ console.log( stringB.match(reg) );  // [ 'ab', 'abbb', 'ab', 'abbbbbb' ]
 // https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/regular-expressions/match-characters-that-occur-zero-or-more-times
 ```
 
+<br>
+<hr>
 
+
+<br><br>
+
+
+
+## Recursion
+#### [Recursion - Return Sub of Array](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/replace-loops-using-recursion)
+```javascript
+/*
+A recursive function that returns 
+the sum of the first n elements of an array arr
+*/
+function sum(arr, n) {
+  if(n <= 0) {
+    return 0;
+  } else {
+    return sum(arr, n - 1) + arr[n - 1];
+  }
+}
+sum([1], 0)           // return 0
+sum([2, 3, 4], 1)     // return 2
+sum([2, 3, 4, 5], 3)  // return 9
+```
 
 <br><br><br>
 
-
-
-
-## [Recursion - to Create a Countdown](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/use-recursion-to-create-a-range-of-numbers)
+#### [Recursion - to Create a Countdown](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/use-recursion-to-create-a-range-of-numbers)
 ```javascript
 function countup(n) {
   if (n < 1) {
@@ -1217,7 +1405,7 @@ console.log(countup(5));
 <br><br><br>
 
 
-## [Recursion - to Create a Range of Numbers](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/use-recursion-to-create-a-countdown)
+#### [Recursion - to Create a Range of Numbers](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/use-recursion-to-create-a-countdown)
 ```javascript
 
 /*
@@ -1254,152 +1442,13 @@ function rangeOfNumbers(startNum, endNum) {
 
 
 
-<br><br><br>
 
 
-## [Prevent Object Mutation](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/es6/prevent-object-mutation)
-JavaScript provides a function Object.freeze to prevent data mutation.
-Once the object is frozen, you can no longer add, update, or delete properties from it. Any attempt at changing the object will be rejected without an error.
-```javascript
-let obj = {
-  name:"FreeCodeCamp",
-  review:"Awesome"
-};
-
-Object.freeze(obj);
-
-obj.review = "bad";
-obj.newProp = "Test";
-console.log(obj); 
-/*
-The obj.review and obj.newProp assignments will result 
-in errors, and the console will display the value 
-{ name: "FreeCodeCamp", review: "Awesome" }.
-*/
-```
+<br>
+<hr>
 
 
-
-<br><br><br>
-
-
-## Concise Declarative Functions with ES6
-```javascript
-//--  ES5 --------
-const person = {
-  name: "Taylor",
-  sayHello: function() {
-    return `Hello! My name is ${this.name}.`;
-  }
-};
-//--  ES6 --------
-// With ES6, you can remove the function keyword and 
-// colon altogether when defining functions in objects
-const person = {
-  name: "Taylor",
-  sayHello() {
-    return `Hello! My name is ${this.name}.`;
-  }
-};
-
-```
-
-
-
-<br><br><br>
-
-
-## Array and Spread Operator
-```javascript
-const arr = [6, 89, 3, 45];
-const maximus = Math.max(...arr);
-
-```
-
-
-
-
-
-
-
-
-<br><br><br>
-
-
-## Destruction
-```javascript
-// Extract Values from Objects
-const user = { name: 'John Doe', age: 34 };
-const { name, age } = user;
-
-// Extract and give new variable names in the assignment
-const user = { name: 'John Doe', age: 34 };
-const { name: userName, age: userAge } = user;
-
-// Assign Variables from Nested Objects Passed
-const user = {
-  johnDoe: { 
-    age: 34,
-    email: 'johnDoe@freeCodeCamp.com'
-  }
-};
-const { johnDoe: { age, email }} = user;
-const { johnDoe: { age: userAge, email: userEmail }} = user;
-
-
-// Destructuring an array lets us do exactly that:
-const [a, b] = [1, 2, 3, 4, 5, 6];
-console.log(a, b); // The console will display the values of a and b as 1, 2.
-
-// Destructuring by using commas to reach the desired index
-const [a, b,,, c] = [1, 2, 3, 4, 5, 6];
-console.log(a, b, c);
-// The console will display the values 
-// of a, b, and c as 1, 2, 5.
-
-// Destructuring Assignment with 
-// the Rest Parameter to Reassign Array
-const [a, b, ...arr] = [1, 2, 3, 4, 5, 7];
-console.log(a, b);
-console.log(arr);
-// The console would display the values 1, 2 and [3, 4, 5, 7].
-
-// Copy Array using Destruction
-let array = [1, 2, 3, 4, 5, 7];
-let copyArray = [...array];
-
-
-// Destructuring Assignment to Pass an Object as a Function's Parameters
-const update = ({name, age, nationality, location}) => {
-    console.log(name, age, nationality, location)
-}
-update({name:"shailendra", age:43, location:"Mumbai"})
-
-```
-
-
-
-<br><br><br>
-
-
-
-## Create Strings using Template Literals
-Template literals allow you to create multi-line strings and to use string interpolation features to create strings.
-```javascript
-const person = {
-  name: "Zodiac Hasbro",
-  age: 56
-};
-
-const greeting = `Hello, my name is ${person.name}!
-I am ${person.age} years old.`;
-
-console.log(greeting);
-```
-
-
-
-<br><br><br>
+<br><br>
 
 
 
@@ -1452,28 +1501,12 @@ duck.hasOwnProperty("numLegs") // false
 ```
 
 
+<br>
+<hr>
 
 <br><br><br>
 
 
-
-## Functional Programming
-Functional Programming is another popular approach to software development. In Functional Programming, code is organized into smaller, basic functions that can be combined to build complex programs
-
-- Functional programming is a style of programming where solutions are simple, isolated functions, without any side effects outside of the function scope: INPUT -> PROCESS -> OUTPUT
-- **Callbacks** are the functions that are slipped or passed into another function to decide the invocation of that function
-- Functional programming is a form of declarative programming. You tell the computer what you want done by calling a method or function
-- **Avoid Mutations and Side Effects Using Functional Programming** - One of the core principles of functional programming is to not change things. Changes lead to bugs. It's easier to prevent bugs knowing that your functions don't change anything, including the function arguments or any global variable.
-- **Pass Arguments to Avoid External Dependence in a Function** - Another principle of functional programming is to always declare your dependencies explicitly. This means if a function depends on a variable or object being present, then pass that variable or object directly into the function as an argument
-- Don't alter a variable or object - create new variables and objects and return them if need be from a function. Hint
-- Use the map Method to Extract Data from an Array
-
-```javascript
-// console.log() - To print output use console.log
-var name = "Shailendra";
-var surname = "more";
-console.log(name, surname)
-```
 
 
 ----------
