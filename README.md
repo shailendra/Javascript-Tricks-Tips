@@ -5,6 +5,12 @@
 ## Table Of Content 
 - [Array](#array)
    - [Array and Spread Operator](#array-and-spread-operator)
+      <details>
+      <summary>
+         Trick and Tips
+      </summary>
+      - [Create an Array](#generate-an-array)
+      </details>
 - [String](#string)
 - [Function](#function)
    - [Arrow Function](#arrow-function)
@@ -19,6 +25,9 @@
 - [Regular expressions](#regular-expressions)
 - [Recursion](#recursion)
 - [Debugging](#debugging)
+
+
+
 
 
 
@@ -243,13 +252,64 @@ items.sort(function(a, b) {
 <br><br><br>
 
 
-#### Array and Spread Operator
+### Array and Spread Operator
 ```javascript
 const arr = [6, 89, 3, 45];
 const maximus = Math.max(...arr);
 // result -  89
 
 ```
+<br><br><br>
+
+### Generate an Array
+##### Empty array of length **`n`**
+
+  ```js
+  var arr = new Array(3);
+
+  // result: arr = [undefined, undefined, undefined]
+  ```
+
+##### Empty array of length **`n`** & fill value **`x`**
+
+  ```js
+  var arr = [...Array(3).fill(1)];
+  var arr2 = [...Array(5).fill(1, 0, 3)];
+
+  /* 
+    result: arr = [1, 1, 1]
+            arr2 = [1, 1, 1, undefined, undefined]
+  */
+  ```
+
+##### Array containing `0...n`
+
+  ```js
+  var arr = [...Array.keys(5)];
+
+  // result: arr = [0, 1, 2, 3, 4]
+  ```
+
+##### Array containing `1...n`
+
+  ```js
+  var arr = [];
+  for (let i = 0; arr.push(++i) < 4; );
+
+  var arr2 = Array.from({ length: 4 }, (_, i) => i + 1);
+  var arr3 = Array.from({ length: 4 }, (_, i) => i * 2);
+  var arr4 = Array.from({ length: 4 }, () => Math.random());
+
+  /* 
+    result: arr =  [1, 2, 3, 4]
+            arr2 = [1, 2, 3, 4]
+            arr3 = [0, 2, 4, 6]
+            arr4 = [0.211, 0.5123, 0.612, 0.8921]
+  */
+  ```
+
+
+
 <br>
 <hr>
 
