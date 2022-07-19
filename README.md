@@ -9,6 +9,7 @@
       <summary>
          Trick and Tips
       </summary>
+      
       - [Create an Array](#generate-an-array)
       </details>
 - [String](#string)
