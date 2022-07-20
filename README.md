@@ -249,6 +249,31 @@ items.sort(function(a, b) {
 });
 ```
 
+<br>
+
+#### [Array.fill()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill)
+The fill() method changes all elements in an array to a static value, from a start index (default 0) to an end index (default array.length). It returns the modified array.
+```javascript
+array.fill(value)
+array.fill(value, start)
+array.fill(value, start, end)
+
+
+const array1 = [1, 2, 3, 4];
+
+// fill with 0 from position 2 until position 4
+console.log(array1.fill(0, 2, 4));
+// expected output: [1, 2, 0, 0]
+
+// fill with 5 from position 1
+console.log(array1.fill(5, 1));
+// expected output: [1, 5, 5, 5]
+
+console.log(array1.fill(6));
+// expected output: [6, 6, 6, 6]
+```
+:warning: : using fill method you can generate static value array. To generate array value as per you need you have to use [**Array.from**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) method
+
 
 <br><br><br>
 
@@ -271,8 +296,10 @@ const maximus = Math.max(...arr);
   // result: arr = [undefined, undefined, undefined]
   ```
 
-##### Empty array of length **`n`** & fill value **`x`**
 
+<br>
+
+##### Empty array of length **`n`** & fill value **`x`**
   ```js
   var arr = [...Array(3).fill(1)];
   var arr2 = [...Array(5).fill(1, 0, 3)];
@@ -282,6 +309,9 @@ const maximus = Math.max(...arr);
             arr2 = [1, 1, 1, undefined, undefined]
   */
   ```
+:warning: : using fill method you can generate static value array. To generate array value as per you need you have to use [**Array.from**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) method
+
+<br>
 
 ##### Array containing `0...n`
 
@@ -291,7 +321,9 @@ const maximus = Math.max(...arr);
   // result: arr = [0, 1, 2, 3, 4]
   ```
 
-##### Array containing `1...n`
+<br>
+
+##### [Array containing `1...n`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
 
   ```js
   var arr = [];
