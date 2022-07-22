@@ -11,6 +11,7 @@
       </summary>
       
       - [Create an Array](#generate-an-array)
+      - [Get unique value from array](#get-unique-value-from-array-using-set)
       </details>
 - [String](#string)
 - [Function](#function)
@@ -21,6 +22,7 @@
    - [Prevent Object Mutation](#prevent-object-mutation)
 - [Class](#class)
 - [OOP](#oop---object-oriented-programming-sample-code)
+- [Set](#set)
 - [Destruction](#destruction)
 - [Promises and Asynchronous Programming](#promises-and-asynchronous-programming)
 - [Regular expressions](#regular-expressions)
@@ -341,7 +343,15 @@ const maximus = Math.max(...arr);
   */
   ```
 
+<br><br><br>
 
+### Get unique value from array using Set
+```javascript
+var arr = [1, 2, 2, 3, 5, 5, 4];
+var newArr = [...new Set(arr)];
+
+// result: newArr = [1, 2, 3, 5, 4]
+```
 
 <br>
 <hr>
@@ -777,6 +787,55 @@ console.log(dog.location, dog.leg);  // mumbai 4
 
 ```
 
+
+<br>
+<hr>
+
+<br><br>
+
+
+## [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
+The Set object lets you store unique values of any type, whether primitive values or object references.
+```javascript
+const mySet1 = new Set()
+
+mySet1.add(1)           // Set [ 1 ]
+mySet1.add(5)           // Set [ 1, 5 ]
+mySet1.add(5)           // Set [ 1, 5 ]
+mySet1.add('some text') // Set [ 1, 5, 'some text' ]
+const o = {a: 1, b: 2}
+mySet1.add(o)
+// Set  [1, 5, 'some text', {a: 1, b: 2}]
+
+mySet1.add({a: 1, b: 2})   // o is referencing a different object, so this is okay
+// Set  [1, 5, 'some text', {a: 1, b: 2}, , {a: 1, b: 2}]
+
+mySet1.has(1)              // true
+mySet1.has(3)              // false, since 3 has not been added to the set
+mySet1.has(5)              // true
+mySet1.has(Math.sqrt(25))  // true
+mySet1.has('Some Text'.toLowerCase()) // true
+mySet1.has(o)       // true
+
+mySet1.size         // 5
+
+mySet1.delete(5)    // removes 5 value from the set
+
+mySet1.has(5)       // false, 5 has been removed
+
+mySet1.size         // 4, since we just removed one value
+
+mySet1.add(5)       // Set [1, 'some text', {...}, {...}, 5] - a previously deleted item will be added as a new item, it will not retain its original position before deletion
+
+console.log(mySet1)
+// logs Set(5) [ 1, "some text", {…}, {…}, 5 ] in Firefox
+// logs Set(5) { 1, "some text", {…}, {…}, 5 } in Chrome
+```
+<br>
+
+[To Iterating and Loop Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#iterating_sets)
+
+[Union/Join, Intersection, SymmetricDifference, Difference, isSuperset](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#implementing_basic_set_operations)
 
 <br>
 <hr>
