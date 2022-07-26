@@ -12,6 +12,10 @@
       
       - [Create an Array](#generate-an-array)
       - [Get unique value from array](#get-unique-value-from-array-using-set)
+      - [Shuffle Array](#shuffle-array)
+      - [Resize an Array](#resize-an-array)
+      - [Random item from Array](#random-item-from-array)
+
       </details>
 - [String](#string)
 - [Function](#function)
@@ -352,6 +356,48 @@ var newArr = [...new Set(arr)];
 
 // result: newArr = [1, 2, 3, 5, 4]
 ```
+
+<br><br><br>
+
+### Shuffle Array
+```javascript
+var arr = [1, 2, 3, 4, 5];
+var shuffleArr = arr.sort(() => Math.random() - 0.5);
+
+// result: shuffleArr = [3, 1, 2, 4, 5]
+```
+
+<br><br><br>
+
+### Resize an Array
+```javascript
+var arr = [1, 2, 3, 4, 5];
+arr.length = 2;
+
+var arr2 = [1, 2, 3, 4, 5];
+arr2.length = 0;
+
+var arr3 = [1, 2, 3, 4, 5];
+arr3.length = 7;
+
+/*
+  result: arr = [1, 2]
+          arr2 = []
+          arr3 = [1, 2, 3, 4, 5, undefined, undefined]
+*/
+```
+
+<br><br><br>
+
+### Random item from Array
+```javascript
+var arr = [2, 4, 5];
+var item = arr[Math.floor(Math.random() * arr.length)];
+
+```
+
+
+
 
 <br>
 <hr>
