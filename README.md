@@ -890,6 +890,8 @@ console.log(mySet1)
 
 
 ## Destruction
+
+#### With Array
 ```javascript
 // Extract Values from Objects
 const user = { name: 'John Doe', age: 34 };
@@ -931,6 +933,13 @@ console.log(arr);
 let array = [1, 2, 3, 4, 5, 7];
 let copyArray = [...array];
 
+// declare and set default value
+var [a, b = 0, c = 0] = [1, 2];
+// same: var a = 1, b = 2, c = 0;
+
+// nested array destructuring
+var [a, b, [c, d], e] = [1, 2, [3, 4], 5];
+// same: var a = 1, b = 2, c = 3, d = 4, e = 5
 
 // Destructuring Assignment to Pass an Object as a Function's Parameters
 const update = ({name, age, nationality, location}) => {
@@ -939,7 +948,36 @@ const update = ({name, age, nationality, location}) => {
 update({name:"shailendra", age:43, location:"Mumbai"})
 
 ```
+<br><br>
 
+#### With Object
+
+```javascript
+var person = { name: 'Dyno', age: 18 };
+
+var { name, age } = person;
+// same: var name = person.name, age = person.age;
+
+// declare and set default value
+var { name = 'Anonymous', age = 1, address = 'HCM city' } = person;
+// same: var name = person.name, age = person.age, address: 'HCM city'
+
+// declare and change variable name
+var { name: personName, age: personAge } = person;
+// same: var personName =  person.name, personAge = person.age
+
+console.log({ name, age });
+// same: {name: 'Dyno', age: 18}
+
+var person = { name: 'Dyno', age: 18, infor: { address: 'HCM', phone: '123' } };
+var {
+	name,
+	age,
+	infor: { address, phone },
+} = person;
+// same: name = person.name, age = person.agem, address = person.infor.address, phone = person.infor.phone
+// nested object destructuring
+```
 
 <br>
 <hr>
