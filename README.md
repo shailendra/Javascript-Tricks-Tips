@@ -17,6 +17,16 @@
       - [Random item from Array](#random-item-from-array)
 
       </details>
+- [Expression & Operators](#expression-and-operators)
+   
+    <details>
+    <summary>
+        Trick and Tips
+    </summary>
+    
+    - [0 is a devil, please stay away from it](#0-is-a-devil--please-stay-away-from-it)
+
+    </details>
 - [String](#string)
 - [Function](#function)
    - [Arrow Function](#arrow-function)
@@ -397,6 +407,54 @@ var item = arr[Math.floor(Math.random() * arr.length)];
 ```
 
 
+
+
+<br>
+
+<hr>
+
+
+<br><br>
+
+
+## Expression and Operators
+###  0 is a devil, please stay away from it
+Please Stop Using “&&” for Conditional Rendering in React
+```javascript
+// React Code
+return (
+    list.length && (
+      <div className="name-list-container">
+        {list.map((name) => {
+          return <div className="name-list-item">{name}</div>;
+        })}
+      </div>
+    )
+  );
+```
+How && works<br>
+More generally, the operator returns the value of the first falsy operand encountered when evaluating from left to right, or the value of the last operand if they are all truthy. <br>
+Let’s learn a very easy example, and I think you will understand it very quickly
+```javascript
+const a = 0
+const b = "React"
+const c = 1
+const d = "Javascript"
+
+console.log(a && b) // 0
+console.log(c && d) // Javascript
+```
+We can try these 3 ways to avoid this problem.
+```javascript
+// 1. Convert list.length to boolean
+!!list.length && <Component list={list} />
+
+// 2. Controlled by specific logic
+list.length >= 1 && <Component list={list} />;
+
+// 3. Use ternary expressions and null
+list.length ? <Component list={list} /> : null;
+```
 
 
 <br>
