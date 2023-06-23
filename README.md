@@ -418,7 +418,8 @@ var item = arr[Math.floor(Math.random() * arr.length)];
 
 
 ## Expression and Operators
-###  0 is a devil, please stay away from it
+
+###  [0 is a devil, please stay away from it](https://javascript.plainenglish.io/its-2023-please-stop-using-for-conditional-rendering-in-react-b588a09ebb17)
 Please Stop Using “&&” for Conditional Rendering in React
 ```javascript
 // React Code
