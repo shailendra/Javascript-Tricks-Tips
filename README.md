@@ -24,7 +24,7 @@
         Trick and Tips
     </summary>
     
-    - [0 is a devil, please stay away from it](#0-is-a-devil--please-stay-away-from-it)
+    - [0 is a devil, please stay away from it](#0-is-a-devil-please-stay-away-from-it)
 
     </details>
 - [String](#string)
